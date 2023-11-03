@@ -19,7 +19,7 @@ typedef struct {
 	Image* destImage;
 } convArgs;
 
-conArgs c_args;
+convArgs c_args;
 //An array of kernel matrices to be used for image convolution.  
 //The indexes of these match the enumeration from the header file. ie. algorithms[BLUR] returns the kernel corresponding to a box blur.
 Matrix algorithms[]={
@@ -159,7 +159,7 @@ int main(int argc,char** argv){
     thread_handles = (pthread_t*)malloc(thread_count*sizeof(pthread_t));
 
     //loop to create p_threads
-    for(thread = 0); thread<thread_count; thread++){
+    for(thread = 0; thread<thread_count; thread++){
 	    c_args.srcImage = &srcImage;
 	    c_args.destImage = &destImage;
 	    pthread_create(&thread_handles[thread], NULL, &pthread_convolute, (void *) thread);
